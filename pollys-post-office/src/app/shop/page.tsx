@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import { useBusiness } from "../context/BusinessContext";
 
 const products = [
   { name: "Chocolate Bar", emoji: "🍫", price: 1.00 },
@@ -19,6 +20,7 @@ const products = [
 ];
 
 export default function Shop() {
+  const { addSale } = useBusiness();
   const [basket, setBasket] = useState<number[]>([]);
   const [message, setMessage] = useState("");
 
@@ -30,10 +32,16 @@ export default function Shop() {
   }
 
   function checkout() {
-    if (basket.length === 0) return;
-    setMessage(`Amazing! Your customer has paid £${total.toFixed(2)}. 🎉`);
-    setBasket([]);
-  }
+  if (basket.length === 0) return;
+
+  addSale("Shop sale", total);
+
+  setMessage(
+    `Amazing! Your customer has paid £${total.toFixed(2)}. 🎉`
+  );
+
+  setBasket([]);
+}
 
   return (
     <main className="min-h-screen bg-[#fff8f1] p-4 sm:p-8">

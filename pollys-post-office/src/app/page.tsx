@@ -2,6 +2,7 @@
 "use client";
 
 import { useState } from "react";
+import { useBusiness } from "./context/BusinessContext";
 
 const sections = [
   { name: "My Shop", emoji: "🛍️", colour: "bg-pink-200", description: "Sell lovely things!" },
@@ -11,7 +12,7 @@ const sections = [
 ];
 
 export default function Home() {
-  const [balance, setBalance] = useState(20);
+  const { balance } = useBusiness();
   const [stars, setStars] = useState(0);
   const [selected, setSelected] = useState("");
 

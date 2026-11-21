@@ -2,12 +2,14 @@
 "use client";
 
 import { useState } from "react";
+import { useBusiness } from "../context/BusinessContext";
 
 type ItemType = "Letter" | "Parcel";
 type Service = "Second Class" | "First Class";
 type ParcelSize = "Small" | "Medium" | "Large";
 
 export default function PostOffice() {
+  const { addSale } = useBusiness();
   const [itemType, setItemType] = useState<ItemType>("Letter");
   const [service, setService] = useState<Service>("Second Class");
   const [size, setSize] = useState<ParcelSize>("Small");
@@ -175,7 +177,10 @@ export default function PostOffice() {
               </p>
 
               <button
-                onClick={() => setPosted(true)}
+                onClick={() => {
+  addSale("Post office postage", postage);
+  setPosted(true);
+}}
                 className="mt-5 w-full rounded-full bg-green-600 py-4 text-lg font-black text-white shadow-sm active:scale-95"
               >
                 Accept Payment & Post! 📮
