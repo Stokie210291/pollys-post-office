@@ -55,13 +55,17 @@ export default function Home() {
             <button
               key={section.name}
               onClick={() => {
-  if (section.name === "My Shop") {
-    window.location.href = "/shop";
-  } else if (section.name === "Post Office") {
-    window.location.href = "/post-office";
-  } else {
-    setSelected(section.name);
-  }
+  
+if (section.name === "My Shop") {
+  window.location.href = "/shop";
+} else if (section.name === "Post Office") {
+  window.location.href = "/post-office";
+} else if (section.name === "My Till") {
+  window.location.href = "/till";
+} else {
+  setSelected(section.name);
+}
+
 }}
               className={`${section.colour} rounded-3xl p-5 text-center shadow-sm transition hover:scale-105 active:scale-95`}
             >
