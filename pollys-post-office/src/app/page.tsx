@@ -62,6 +62,8 @@ if (section.name === "My Shop") {
   window.location.href = "/post-office";
 } else if (section.name === "My Till") {
   window.location.href = "/till";
+} else if (section.name === "My Business") {
+  window.location.href = "/business";
 } else {
   setSelected(section.name);
 }
